@@ -1,0 +1,10 @@
+---
+
+- name: Create /var/instances/ directory
+  ansible.builtin.file:
+    path: /var/instances
+    state: directory
+    mode: '0755'
+  become: yes
+  tags:
+    - tag1

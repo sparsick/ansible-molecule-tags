@@ -1,0 +1,8 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "ansible-molecule-tags"
+      include_role:
+        name: "ansible-molecule-tags"
+
