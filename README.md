@@ -22,12 +22,27 @@ INFO     Running tag1 > converge
 PLAY [Converge] ****************************************************************
 
 TASK [Gathering Facts] *********************************************************
-fatal: [instance]: UNREACHABLE! => {"changed": false, "msg": "Failed to create temporary directory. In some cases, you may have been able to authenticate and did not have permissions on the target directory. Consider changing the remote tmp path in ansible.cfg to a path rooted in \"/tmp\", for more error information use -vvv. Failed command was: ( umask 77 && mkdir -p \"` echo ~/.ansible/tmp `\"&& mkdir \"` echo ~/.ansible/tmp/ansible-tmp-1676533208.7835898-20945-71609450033956 `\" && echo ansible-tmp-1676533208.7835898-20945-71609450033956=\"` echo ~/.ansible/tmp/ansible-tmp-1676533208.7835898-20945-71609450033956 `\" ), exited with result 1", "unreachable": true}
-
+fatal: [instance]: UNREACHABLE! => {"changed": false, "msg": "Failed to create temporary directory. In some cases, you may have been able to authenticate and did not have permissions on the target directory. Consider changing the remote tmp path in ansible.cfg to a path rooted in \"/tmp\", for more error information use -vvv. Failed command was: ( umask 77 && mkdir -p \"` echo ~/.ansible/tmp `\"&& mkdir \"` echo ~/.ansible/tmp/ansible-tmp-1681307516.0007918-103748-115900764144251 `\" && echo ansible-tmp-1681307516.0007918-103748-115900764144251=\"` echo ~/.ansible/tmp/ansible-tmp-1681307516.0007918-103748-115900764144251 `\" ), exited with result 1", "unreachable": true}
 PLAY RECAP *********************************************************************
 instance                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0
 
 ```
+
+## Workaround to solve the problem
+
+After installing the molecule-plugin 'docker'
+```shell
+pip3 install 'molecule-plugins[docker]'
+
+```
+ You have to add the following tag config to all playbooks of this plugin
+
+ ```yaml
+tags:
+  - always 
+
+ ```
+
 
 ## Used tool version
 

@@ -5,4 +5,6 @@
     - name: "ansible-molecule-tags"
       include_role:
         name: "ansible-molecule-tags"
+      tags:
+        - tag1
 
