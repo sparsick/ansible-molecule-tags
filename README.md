@@ -1,6 +1,22 @@
 # ansible-molecule-tags
 
-Playground to find out how to configure molecule to test roles that include tags.
+Playground to find out how to configure molecule to test roles that include tags. Used platform is `docker`.
+
+Problem exists when using
+
+```shell
+➜ molecule --version   
+molecule 4.0.4 using python 3.10 
+    ansible:2.14.2
+    delegated:4.0.4 from molecule
+    docker:2.0.0 from molecule_docker requiring collections: community.docker>=3.0.0-a2
+
+```
+
+and
+```shell
+molecule-plugins-22.1.0
+```
 
 Default Scenario runs sucessfull without tags.
 
@@ -28,29 +44,7 @@ instance                   : ok=0    changed=0    unreachable=1    failed=0    s
 
 ```
 
-## Workaround to solve the problem
+## Solution
 
-After installing the molecule-plugin 'docker'
-```shell
-pip3 install 'molecule-plugins[docker]'
+Update molecule to 5.0.0 and molecule-plugins to 23.4.0.
 
-```
- You have to add the following tag config to all playbooks of this plugin
-
- ```yaml
-tags:
-  - always 
-
- ```
-
-
-## Used tool version
-
-```shell
-➜ molecule --version   
-molecule 4.0.4 using python 3.10 
-    ansible:2.14.2
-    delegated:4.0.4 from molecule
-    docker:2.0.0 from molecule_docker requiring collections: community.docker>=3.0.0-a2
-
-```
